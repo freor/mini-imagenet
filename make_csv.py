@@ -68,6 +68,6 @@ def make_tvt_csv(p, csv_path):
 
 if __name__ == '__main__':
     path = "./dataset/new_dataset/"
-    csv_path = "./"
+    csv_path = "../RelationNetworkFewShot/"
     make_tvt_csv(path, csv_path)
 
