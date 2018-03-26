@@ -11,7 +11,7 @@ final_path = "./dataset/new-mini-Imagenet/"
 print("1. Making new mini-imagenet dataset!")
 data_generator()
 # change file name with "0" added
-print("2. Img Name is converting...")
+print("2. Img Name is being converted...")
 img_name_convert(new_path)
 # make csv file for train, val and test
 print("3. CSV file is being made...")
