@@ -5,7 +5,7 @@ from make_csv import *
 
 new_path = "./dataset/new_dataset/"
 csv_path = "./dataset/"
-final_path = "./dataset/new-mini-Imagenet/"
+final_path = "./dataset/new_dataset/"
 
 # make new mini imagenet dataset
 print("1. Making new mini-imagenet dataset!")
