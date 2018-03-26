@@ -1,19 +1,20 @@
 import os
 import subprocess
+from tqdm import tqdm
 
 
-def img_name_convert(mini_img_path, new_img_path):
+def img_name_convert(mini_img_path):
+    '''
+    SPEC
+        > convert original name to new "0" added name
+        > and put new directory without label's directory
+    '''
     mini_img_path = "./dataset/new_dataset/"
-    new_img_path = "./dataset/rn_mn_img/"
-
-    if os.path.exists(new_img_path):
-        tmp = os.system("rm -rf %s" % new_img_path)
-    tmp = os.system("mkdir %s" % new_img_path)
 
     # list of files in "mini_img_path"
     files = os.listdir(mini_img_path)
 
-    for f in files:
+    for f in tqdm(files):
         path = mini_img_path + f + "/"
         images = os.listdir(path) # list of images in each directory
 
@@ -22,7 +23,6 @@ def img_name_convert(mini_img_path, new_img_path):
 
             img_name = []
             img_name += [t[0]]
-            print(img_name)
 
             ext = t[1].split('.')
             img_name += [ext[0]]
@@ -36,17 +36,26 @@ def img_name_convert(mini_img_path, new_img_path):
 
             img = img_name[0] + tmp + "." + ext
 
-            tmp = os.system("cp %s %s" % (path + i, new_img_path + img))
+            tmp = os.system("mv %s %s" % (path + i, path + img))
 
-    print("new mini-imagenet dataset for 'Relation Network for Few-Shot Learning' is successfully created.")
+    print("file names of new mini-imagenet dataset are successfully changed!")
+
+def move_images(path):
+
+    img_path = path
+    dirts = os.listdir(path)
+
+    for d in tqdm(dirts):
+        res = os.system("mv %s ../" % (path + d + "/*"))
+
+    print("all files are moved to '../' successfully")
+
 
 if __name__ == "__main__":
     origin_path = "./dataset/new_dataset/"
     new_path = "./dataset/rn_mn_img/"
 
-    img_name_convert(origin_path, new_path)
-
-
-
+    img_name_convert(origin_path)
+    #move_images(new_path)
 
 

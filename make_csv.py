@@ -1,6 +1,7 @@
 import csv
 import os
 import numpy as np
+from tqdm import tqdm
 
 
 def make_tvt_csv(p, csv_path):
@@ -32,7 +33,7 @@ def make_tvt_csv(p, csv_path):
     output = open(csv_path + "train.csv", "w")
     writer = csv.writer(output)
 
-    for l in train:
+    for l in tqdm(train):
         v = p + labels[l]
         fs = os.listdir(v)
 
@@ -44,7 +45,7 @@ def make_tvt_csv(p, csv_path):
     output = open(csv_path + "val.csv", "w")
     writer = csv.writer(output)
 
-    for l in val:
+    for l in tqdm(val):
         v = p + labels[l]
         fs = os.listdir(v)
 
@@ -56,7 +57,7 @@ def make_tvt_csv(p, csv_path):
     output = open(csv_path + "test.csv", "w")
     writer = csv.writer(output)
 
-    for l in test:
+    for l in tqdm(test):
         v = p + labels[l]
         fs = os.listdir(v)
 
@@ -68,6 +69,7 @@ def make_tvt_csv(p, csv_path):
 
 if __name__ == '__main__':
     path = "./dataset/new_dataset/"
-    csv_path = "../RelationNetworkFewShot/"
+    #csv_path = "../RelationNetworkFewShot/"
+    csv_path = "./dataset/"
     make_tvt_csv(path, csv_path)
 

@@ -1,10 +1,15 @@
 import os
 import sys
 import subprocess
+from tqdm import tqdm
 #import glob
 
 
 def data_generator():
+    '''
+    SPEC
+        >  makes new "mini-Imagenet" DATASET into "./dataset/new_dataset/"
+    '''
     base = "./dataset/data_tar/"
     IMAGE_NET_DATA1 = base + "ILSVRC2012_img_train.tar"
     IMAGE_NET_DATA2 = base + "ILSVRC2012_img_train_t3.tar"
@@ -78,10 +83,10 @@ def data_generator():
     fn_split = fn_txt.read().split("\n")
 
     img_dict = {}
-    for i in range(NUM_CLASS):
+    for i in tqdm(range(NUM_CLASS)):
         img_dict[fn_split[i * NUM_STRIDE]] = fn_split[i * NUM_STRIDE + 1: i * NUM_STRIDE + NUM_EXMP + 1]
 
-    for key, value in img_dict.items():
+    for key, value in tqdm(img_dict.items()):
         img_num = key.split('/')[3]
         img_fn =  tmp_img_path + img_num + file_format # e.g. "/dataset/data_tmp/n01614925.tar"
         print("Unzipping %s" % img_fn)
@@ -114,9 +119,9 @@ def data_generator():
 
         npath += "/"
 
-        for n in value:
+        for n in tqdm(value):
             tmp_nimg = tmp_img_path + n#imgs_path + n
-            print("%s is processed" % tmp_nimg)
+            #print("%s is processed" % tmp_nimg)
             try:
                 t = subprocess.Popen(sp_cmd + ["mv %s %s" % (tmp_nimg, npath)],
                                                          stdout=subprocess.PIPE,
