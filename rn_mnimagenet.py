@@ -1,6 +1,7 @@
 import os
 import subprocess
 from tqdm import tqdm
+import subprocess
 
 
 def img_name_convert(mini_img_path):
@@ -41,21 +42,33 @@ def img_name_convert(mini_img_path):
     print("file names of new mini-imagenet dataset are successfully changed!")
 
 def move_images(path):
+    sp_cmd = ['/bin/bash', '-c']
 
     img_path = path
     dirts = os.listdir(path)
 
     for d in tqdm(dirts):
-        res = os.system("mv %s ../" % (path + d + "/*"))
+        #res = os.system("mv %s ../" % (path + d + "/*"))
+        print(path+d)
+        #res = os.system("rm -rf %s" % (path + d))
+        t = subprocess.Popen(sp_cmd + ["mv %s %s" % (path + d + '/*', path)],
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE)
+        t.communicate()
+        t = subprocess.Popen(sp_cmd + ["rm -rf %s" % (path + d)],
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE)
+        t.communicate()
+
+
 
     print("all files are moved to '../' successfully")
 
 
 if __name__ == "__main__":
     origin_path = "./dataset/new_dataset/"
-    new_path = "./dataset/rn_mn_img/"
 
-    img_name_convert(origin_path)
-    #move_images(new_path)
+    #img_name_convert(origin_path)
+    move_images(origin_path)
 
 
