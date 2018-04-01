@@ -22,7 +22,11 @@ and execute
 
 then,
 
-you can get `new_dataset` in `./dataset/`
+you can get
+
+`new_dataset` in `./dataset/`
+
+`train.csv`, `val.csv` and `test.csv` in `./dataset/`
 
 ## Specification
 
