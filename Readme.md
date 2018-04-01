@@ -10,13 +10,19 @@ download Imagenet dataset in `./dataset/data_tar`
 
 | dataset
 
-| | data_tar
+| - data_tar
 
-| | | ILSVRC2012_img_trian.tar
+| - | - ILSVRC2012_img_trian.tar
 
-| | | ILSVRC2012_img_train_t3.tar
+| - | - ILSVRC2012_img_train_t3.tar
+
+and execute
 
 `python3 main.py`
+
+then,
+
+you can get `new_dataset` in `./dataset/`
 
 ## Specification
 
