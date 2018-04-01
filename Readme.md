@@ -1,14 +1,18 @@
 # Mini Imagenet Dataset Creater
-reference to [Matching Network](https://arxiv.org/pdf/1606.04080.pdf)
-can be used for training [Learning to Compare: Code/Github](https://github.com/dragen1860/LearningToCompare-Pytorch)
+> reference to [Matching Network](https://arxiv.org/pdf/1606.04080.pdf)
+
+> can be used for training [Learning to Compare: Code/Github](https://github.com/dragen1860/LearningToCompare-Pytorch)
 
 ## Usage
 
-download Imagenet dataset in ./dataset/data_tar
+download Imagenet dataset in `./dataset/data_tar`
 
-| dataset <Enter>
-| | - data_tar <Enter>
+| dataset
+
+| | - data_tar
+
 | | | - ILSVRC2012_img_trian.tar
+
 | | | - ILSVRC2012_img_train_t3.tar
 
 
